@@ -12,7 +12,7 @@ export const AppRouter = () => {
     return (
         <Router>
             <div className="row">
-                <div className="col-xs-12 col-sm-6 col-md-5 mx-auto">
+                <div className="col-xs-12 col-sm-7 col-md-5 mx-auto">
                     <div className="card_login">
                         <div className="card">
                             <div className="card-body text-center">
