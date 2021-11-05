@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { UseForm } from '../../hooks/useForm';
+import { useForm } from '../../hooks/useForm';
 
-export const registerScreen = () => {
+export const RegisterScreen = () => {
 
-    const [ formValues, handleInputChange ] = UseForm({
+    const [ formValues, handleInputChange ] = useForm({
         name: '',
         email: '',
         password: '',

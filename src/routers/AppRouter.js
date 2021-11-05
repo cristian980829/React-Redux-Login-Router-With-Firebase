@@ -6,8 +6,8 @@ import {
     Route
   } from 'react-router-dom';
 
-import { loginScreen } from '../components/auth/loginScreen';
-import { registerScreen } from '../components/auth/registerScreen';
+import { LoginScreen } from '../components/auth/LoginScreen';
+import { RegisterScreen } from '../components/auth/RegisterScreen';
 
 export const AppRouter = () => {
     return (
@@ -21,13 +21,13 @@ export const AppRouter = () => {
                                     <Route 
                                         exact
                                         path="/auth/login"
-                                        component={ loginScreen }
+                                        component={ LoginScreen }
                                     />
 
                                     <Route 
                                         exact
                                         path="/auth/register"
-                                        component={ registerScreen }
+                                        component={ RegisterScreen }
                                     />
                                     
 
