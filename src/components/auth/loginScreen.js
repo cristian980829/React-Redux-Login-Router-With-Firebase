@@ -51,7 +51,7 @@ export const LoginScreen = () => {
                 />   
             </div>
             <div className="d-grid gap-2">
-                <button className="btn btn-danger" type="submit">Login</button>
+                <button className="btn btn-outline-primary" type="submit">Login</button>
             </div>
             <div className="auth__social-networks">
                 <div 
