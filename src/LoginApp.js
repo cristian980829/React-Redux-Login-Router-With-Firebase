@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { AppRouter } from './routers/AppRouter';
 
 export const LoginApp = () => {
     return (
         <div className="container mt-3">
-            <h2>Login App</h2>
+                <AppRouter />
         </div>
     )
 }
