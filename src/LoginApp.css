@@ -26,8 +26,8 @@
 }
 
 .btn-text {
-    float: right;
-    margin: 11px 40px 0 0;
+    float:inline-start;
+    margin: 11px 0 0 20%;
     color: white;
     font-size: 14px;
     letter-spacing: 0.2px;
