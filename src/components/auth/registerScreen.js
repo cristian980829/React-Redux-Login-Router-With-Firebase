@@ -46,16 +46,16 @@ export const RegisterScreen = () => {
 
     return (
         <form
-        onSubmit={handleRegister}
-        className="animate__animated animate__fadeIn animate__faster">
+            onSubmit={handleRegister}
+            className="animate__animated animate__fadeIn animate__faster">
             {
-                    error &&
-                    (
-                        <div className="alert alert-danger" role="alert">
-                            {error}
-                        </div>
-                    )
-                }
+                error &&
+                (
+                    <div className="alert alert-danger" role="alert">
+                        {error}
+                    </div>
+                )
+            }
 
             <div className="mb-3">
                 <label htmlFor="exampleInputText" className="form-label mb-3">Register</label>

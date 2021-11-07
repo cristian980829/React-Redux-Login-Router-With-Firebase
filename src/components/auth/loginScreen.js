@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import validator from 'validator';
+
 import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
 
     const dispatch = useDispatch();
+
+    const [error, setError] = useState("");
 
     const [ formValues, handleInputChange ] = useForm({
         email: '',
@@ -17,16 +21,39 @@ export const LoginScreen = () => {
 
     const handleLogin = (e) =>{
         e.preventDefault();
-        dispatch( startLoginEmailPassword( email, password ) );
+        if(isFormValid()){
+            dispatch( startLoginEmailPassword( email, password ) );
+        }
     }
 
     const handleGoogleLogin = () => {
         dispatch( startGoogleLogin() );
     }
 
+    const isFormValid = () => {
+        if ( !validator.isEmail( email ) ) {
+            setError('Email is not valid');
+            return false;
+        } else if (password.length < 5 ) {
+            setError('Password should be at least 6 characters');
+            return false
+        }
+        setError("");
+       return true;
+    }
+
     return (
-        <form onSubmit={handleLogin}
-        className="animate__animated animate__fadeIn animate__faster">
+        <form 
+            onSubmit={handleLogin}
+            className="animate__animated animate__fadeIn animate__faster">
+            {
+                error &&
+                (
+                    <div className="alert alert-danger" role="alert">
+                        {error}
+                    </div>
+                )
+            }
             <div className="mb-3">
                 <label htmlFor="exampleInputText" className="form-label mb-3">Login</label>
                 <input 

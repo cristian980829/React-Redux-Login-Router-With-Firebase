@@ -1,4 +1,6 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
+import Swal from 'sweetalert2';
+
 import { types } from '../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
@@ -10,7 +12,7 @@ export const startLoginEmailPassword = (email, password) => {
 
             })
             .catch( e => {
-                console.log(e);
+                Swal.fire('Error', e.message, 'error');
             })
     }
 };
@@ -29,7 +31,7 @@ export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
                 );
             })
             .catch( e => {
-                console.log(e);
+                Swal.fire('Error', e.message, 'error');
             })
 
     }
@@ -40,7 +42,6 @@ export const startGoogleLogin = () => {
 
         firebase.auth().signInWithPopup( googleAuthProvider )
             .then( ({ user }) => {
-                console.log(user);
                 dispatch(
                     login( user.uid, user.displayName )
                 )
