@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState}  from 'react'
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import validator from 'validator';
+
 import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
@@ -8,7 +10,9 @@ export const RegisterScreen = () => {
 
     const dispatch = useDispatch();
 
-    const [ formValues, handleInputChange ] = useForm({
+    const [error, setError] = useState("");
+
+ const [ formValues, handleInputChange ] = useForm({
         name: '',
         email: '',
         password: '',
@@ -19,13 +23,40 @@ export const RegisterScreen = () => {
 
     const handleRegister = (e) =>{
         e.preventDefault();
-        dispatch( startRegisterWithEmailPasswordName(email, password, name) );
+        if(isFormValid()){
+            dispatch( startRegisterWithEmailPasswordName(email, password, name) );
+        }
+    }
+
+    const isFormValid = () => {
+        
+        if ( name.trim().length === 0 ) {
+            setError('Name is required'); 
+            return false;
+        } else if ( !validator.isEmail( email ) ) {
+            setError('Email is not valid');
+            return false;
+        } else if ( password !== password2 || password.length < 5 ) {
+            setError('Password should be at least 6 characters and match each other');
+            return false
+        }
+        setError("");
+       return true;
     }
 
     return (
         <form
         onSubmit={handleRegister}
         className="animate__animated animate__fadeIn animate__faster">
+            {
+                    error &&
+                    (
+                        <div className="alert alert-danger" role="alert">
+                            {error}
+                        </div>
+                    )
+                }
+
             <div className="mb-3">
                 <label htmlFor="exampleInputText" className="form-label mb-3">Register</label>
                 <input 
