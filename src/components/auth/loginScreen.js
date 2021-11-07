@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startGoogleLogin } from '../../actions/auth';
+import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
@@ -17,7 +17,7 @@ export const LoginScreen = () => {
 
     const handleLogin = (e) =>{
         e.preventDefault();
-        console.log(email, password);
+        dispatch( startLoginEmailPassword( email, password ) );
     }
 
     const handleGoogleLogin = () => {
