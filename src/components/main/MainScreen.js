@@ -16,13 +16,10 @@ export const MainScreen = () => {
             <h1>Main screen</h1>
 
             <span>Bienvenido: { name }</span>
-
-            <button 
-                    className="btn btn-outline-danger mt-3"
-                    onClick={ hanleLogout }
-                >
-                    Logout
-                </button>
+            <div className="d-grid gap-2">
+                <button className="btn btn-outline-danger mt-4"
+                        onClick={ hanleLogout }>Logout</button>
+            </div>
         </div>
     )
 }
