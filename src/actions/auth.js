@@ -1,19 +1,52 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
+import { db } from '../firebase/firebase-config';
+
 import Swal from 'sweetalert2';
 
 import { types } from '../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
-    return (dispatch) => {        
+    return async (dispatch) => {     
+
+        const newNote = {
+            email,
+            password,
+        }
+
+        Swal.fire({
+            title: 'Cargando...',
+            text: 'Por favor espere...',
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading();
+            }
+        });        
+
         
-        firebase.auth().signInWithEmailAndPassword( email, password )
+        try {
+            firebase.auth().signInWithEmailAndPassword( 'cristi@gmail.com', '123456' )
             .then( ({ user }) => {
                 dispatch(login( user.uid, user.displayName ));
+                
+                const uid = 'TstalbZgOfd9cQUHH6X1rDQjMqq2';
+                db.collection(`${ uid }/accounts/account`).add( newNote ).then(res => {
+                    Swal.close();
+                    console.log('AAAAAAA', res)
+                })
+            })
+            
+            
+                .catch( e => {
+                    Swal.fire('Error', e.message, 'error');
+                })
+            
+        } catch (error) {
+            console.log(error);
+        }
 
-            })
-            .catch( e => {
-                Swal.fire('Error', e.message, 'error');
-            })
+        // dispatch( refreshNote( note.id, noteToFirestore ) );
+        // Swal.fire('Saved', note.title, 'success');
+        
     }
 };
 
@@ -50,13 +83,14 @@ export const startGoogleLogin = () => {
     }
 };
 
-export const login = (uid, displayName) => ({
-    type: types.login,
-    payload: {
-        uid,
-        displayName
+export const login = (uid, displayName) => {
+    return {
+        type: types.login,
+        payload: {
+            uid,
+            displayName        }
     }
-});
+};
 
 export const startLogout = () => {
     return async( dispatch ) => {

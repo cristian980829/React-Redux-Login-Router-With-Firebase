@@ -46,7 +46,7 @@ export const AppRouter = () => {
 
     if ( checking ) {
         return (
-            <h1>Wait...</h1>
+            <h1>Cargando...</h1>
         )
     }
 
@@ -55,35 +55,26 @@ export const AppRouter = () => {
 
     return (
         <Router>
-            <div className="row">
-                <div className="col-xs-14 col-sm-6 col-md-4 mx-auto">
-                    <div className="card_login">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <Switch>
-                                    <PublicRoute 
-                                        path="/auth"
-                                        component={ AuthRouter }
-                                        isAuthenticated={ isLoggedIn }
-                                    />
+            
+            <Switch>
+                <PublicRoute 
+                    path="/auth"
+                    component={ AuthRouter }
+                    isAuthenticated={ isLoggedIn }
+                />
 
-                                    <PrivateRoute 
-                                        exact
-                                        isAuthenticated={ isLoggedIn }
-                                        path="/"
-                                        component={ MainScreen }
-                                    />
-                                    
+                <PrivateRoute 
+                    exact
+                    isAuthenticated={ isLoggedIn }
+                    path="/"
+                    component={ MainScreen }
+                />
+                
 
-                                    <Redirect to="/auth/login" />
+                <Redirect to="/auth/login" />
 
 
-                                </Switch>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </Switch>
         </Router>
     )
 }
