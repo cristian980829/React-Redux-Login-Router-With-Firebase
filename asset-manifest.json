@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/React-Redux-Login-Router-With-Firebase/static/css/main.bd37b50b.chunk.css",
+    "main.js": "/React-Redux-Login-Router-With-Firebase/static/js/main.01775a29.chunk.js",
+    "main.js.map": "/React-Redux-Login-Router-With-Firebase/static/js/main.01775a29.chunk.js.map",
+    "runtime-main.js": "/React-Redux-Login-Router-With-Firebase/static/js/runtime-main.b770ffce.js",
+    "runtime-main.js.map": "/React-Redux-Login-Router-With-Firebase/static/js/runtime-main.b770ffce.js.map",
+    "static/js/2.b76d2af7.chunk.js": "/React-Redux-Login-Router-With-Firebase/static/js/2.b76d2af7.chunk.js",
+    "static/js/2.b76d2af7.chunk.js.map": "/React-Redux-Login-Router-With-Firebase/static/js/2.b76d2af7.chunk.js.map",
+    "index.html": "/React-Redux-Login-Router-With-Firebase/index.html",
+    "static/css/main.bd37b50b.chunk.css.map": "/React-Redux-Login-Router-With-Firebase/static/css/main.bd37b50b.chunk.css.map",
+    "static/js/2.b76d2af7.chunk.js.LICENSE.txt": "/React-Redux-Login-Router-With-Firebase/static/js/2.b76d2af7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b770ffce.js",
+    "static/js/2.b76d2af7.chunk.js",
+    "static/css/main.bd37b50b.chunk.css",
+    "static/js/main.01775a29.chunk.js"
+  ]
+}
